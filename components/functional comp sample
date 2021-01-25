@@ -1,0 +1,12 @@
+import React from 'react';
+import {} from 'react-native';
+
+const FunctionName = props => {
+    return
+};
+
+const styles = StyleSheet.create({
+
+});
+
+export default FunctionName;
