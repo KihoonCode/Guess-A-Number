@@ -1,24 +1,32 @@
 import React from 'react';
 import {
-   StyleSheet,
-   View,
-   Text,
-   Button,
-   TextInput
+   StyleSheet, View, Text, Button, TextInput
 } from 'react-native';
+import Card from '../components/Card';
+import Colors from '../constants/colors';
 
 const StartGameScreen = props => {
    return (
       <View style={styles.screen}>
          <Text style={styles.title}>Start a New Game!</Text>
-         <View style={styles.inputContainer}>
+         <Card style={styles.inputContainer}>
             <Text>Select a number!</Text>
             <TextInput style={styles.userInput} placeholder="Type a number" />
             <View style={styles.buttonContainer}>
-               <Button title="RESET" onPress={() => { }} />
-               <Button title="CONFIRM" onPress={() => { }} />
+               <View style={styles.button}>
+                  <Button
+                     title="RESET"
+                     onPress={() => { }}
+                     color={Colors.primary} />
+               </View>
+               <View style={styles.button}>
+                  <Button
+                     title="CONFIRM"
+                     onPress={() => { }}
+                     color={Colors.primary} />
+               </View>
             </View>
-         </View>
+         </Card>
       </View>
    );
 };
@@ -38,12 +46,14 @@ const styles = StyleSheet.create({
    inputContainer: {
       width: 300,
       maxWidth: '80%',
-      alignItems: 'center'
+      alignItems: 'center',
+      marginTop: 20
    },
 
    userInput: {
       padding: 10,
-      marginVertical: '5%'
+      marginVertical: '5%',
+      fontSize: 15
    },
 
    buttonContainer: {
@@ -52,6 +62,10 @@ const styles = StyleSheet.create({
       width: '100%',
       paddingHorizontal: 20,
       marginTop: '5%'
+   },
+
+   button: {
+      width: '50%'
    }
 });
 
