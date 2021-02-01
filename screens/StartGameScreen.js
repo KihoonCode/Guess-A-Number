@@ -8,16 +8,19 @@ import {
    Keyboard,
    Alert
 } from 'react-native';
+
 import Card from '../components/Card';
 import Colors from '../constants/colors';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
 
 const StartGameScreen = props => {
-   // current user input 
+   // current user's typing input 
    const [userInput, setUserInput] = useState("");
+
    // number user confirmed
    const [number, setNumber] = useState();
+   
    // whether user's chosen input is valid
    const [confirmed, setConfirmed] = useState(false);
 
@@ -55,14 +58,18 @@ const StartGameScreen = props => {
       setUserInput('');
    }
 
+   // confirmation screen that shows selected number.
    let confirmedOutput;
 
    if (confirmed) {
-      confirmedOutput = 
-         <Card>
+      confirmedOutput =
+         <Card style={styles.confirmedOutput}>
             <Text>Your Chosen Number: </Text>
             <NumberContainer>{number}</NumberContainer>
-            <Button title="START GAME!"/>
+            <Button
+               color={Colors.primary}
+               title="START GAME!"
+               onPress={() => props.startGame(number)} />
          </Card>
    }
 
@@ -122,8 +129,8 @@ const styles = StyleSheet.create({
    },
 
    userInput: {
-      padding: 10,
-      fontSize: 15,
+      padding: 3,
+      fontSize: 20,
       width: '18%',
       textAlign: 'center'
    },
@@ -137,6 +144,11 @@ const styles = StyleSheet.create({
 
    button: {
       width: '50%'
+   },
+
+   confirmedOutput: {
+      marginVertical: '10%',
+      alignItems: 'center'
    }
 });
 
