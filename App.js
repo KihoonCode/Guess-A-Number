@@ -4,11 +4,14 @@ import { StyleSheet, View } from 'react-native';
 import Header from './components/Header';
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
+import GameOverScreen from './screens/GameOverScreen';
 
 
 export default function App() {
    // user's final guess
    const [userGuess, setUserGuess] = useState();
+   // number of guesses taken to get user's number
+   const [numGuess, setNumGuess] = useState(0);
 
    /**
     * Starts the game with the final guess.
@@ -17,13 +20,19 @@ export default function App() {
       setUserGuess(guess);
    }; 
 
+   const endGame = totalGuess => {
+      setNumGuess(totalGuess);
+   }
+
    /**
     * current screen
     */
    let currScreen = <StartGameScreen startGame={startGame} />
 
-   if (userGuess) {
-      currScreen = <GameScreen userGuess={userGuess} />
+   if (userGuess && numGuess <= 0) {
+      currScreen = <GameScreen userGuess={userGuess} endGame={endGame}/>;
+   } else if (numGuess > 0) {
+      currScreen = <GameOverScreen />;
    }
 
    return (
