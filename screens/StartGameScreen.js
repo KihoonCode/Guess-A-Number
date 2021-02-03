@@ -20,7 +20,7 @@ const StartGameScreen = props => {
 
    // number user confirmed
    const [number, setNumber] = useState();
-   
+
    // whether user's chosen input is valid
    const [confirmed, setConfirmed] = useState(false);
 
