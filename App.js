@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
+import AppLoading from 'expo-app-loading';
 
 import Header from './components/Header';
 import StartGameScreen from './screens/StartGameScreen';
@@ -67,7 +67,7 @@ export default function App() {
 
    return (
       <View style={styles.screen}>
-         <Header title="Guess a number" />
+         <Header title='Guess a number' />
          {currScreen}
       </View>
    );
