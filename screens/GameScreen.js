@@ -4,6 +4,7 @@ import { StyleSheet, View, Text, Button, Alert } from 'react-native';
 import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
 import Colors from '../constants/colors';
+import TitleText from '../components/TitleText';
 
 /**
  * Returns a random number between min(inclusive) and max(exclusive), yet
@@ -67,7 +68,7 @@ const GameScreen = props => {
    return (
       <View style={styles.screen}>
          <Card style={styles.numberContainer}>
-            <Text>Your opponent's guess:</Text>
+            <TitleText>Your opponent's guess:</TitleText>
             <NumberContainer>{currGuess}</NumberContainer>
          </Card>
          <Card style={styles.buttonContainer}>
