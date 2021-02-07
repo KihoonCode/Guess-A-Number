@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, Button, Image } from 'react-native';
 
 import TitleText from '../components/TitleText';
 import BodyText from '../components/BodyText';
+import MainButton from '../components/MainButton';
+
 import Colors from '../constants/colors';
 
 const GameOverScreen = ({ totalGuesses, userGuess, onRestart }) => {
@@ -17,14 +19,13 @@ const GameOverScreen = ({ totalGuesses, userGuess, onRestart }) => {
          </View>
          <View style={styles.resultContainer}>
             <BodyText style={styles.resultText}>
-               Your Phone took <Text/>
+               Your Phone took <Text />
                <Text style={styles.highlightedText}>{totalGuesses}</Text>
-               <Text/> round(s) to guess the number <Text/>
+               <Text /> round(s) to guess the number <Text />
                <Text style={styles.highlightedText}>{userGuess}</Text>
             </BodyText>
          </View>
-         <BodyText>Challenge again?</BodyText>
-         <Button title='Restart' onPress={onRestart} />
+         <MainButton onPress={onRestart}>Restart</MainButton>
       </View>
    );
 };

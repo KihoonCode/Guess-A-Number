@@ -3,8 +3,10 @@ import { StyleSheet, View, Text, Button, Alert } from 'react-native';
 
 import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
-import Colors from '../constants/colors';
 import TitleText from '../components/TitleText';
+import MainButton from '../components/MainButton';
+
+import Colors from '../constants/colors';
 
 /**
  * Returns a random number between min(inclusive) and max(exclusive), yet
