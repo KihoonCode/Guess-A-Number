@@ -11,7 +11,10 @@ const GameOverScreen = ({ totalGuesses, userGuess, onRestart }) => {
          <TitleText>The Game is Over!</TitleText>
          <View style={styles.imageContainer}>
             <Image
-               source={require('../assets/success.png')}
+               // for local image
+               // source={require('../assets/success.png')}
+               // for web image
+               source={{uri: 'https://dictionary.cambridge.org/ko/images/thumb/summit_noun_002_36618.jpg?version=5.0.151'}}
                style={styles.image}
             />
          </View>
