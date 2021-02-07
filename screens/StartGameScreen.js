@@ -117,37 +117,31 @@ const styles = StyleSheet.create({
       padding: 10,
       alignItems: 'center'
    },
-
    title: {
       fontSize: 20,
       marginVertical: 10
    },
-
    inputContainer: {
       width: 300,
       maxWidth: '80%',
       alignItems: 'center',
       marginTop: 20
    },
-
    userInput: {
       padding: 3,
       fontSize: 20,
       width: '18%',
       textAlign: 'center'
    },
-
    buttonContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       width: '100%',
       paddingHorizontal: 20
    },
-
    button: {
       width: '50%'
    },
-
    confirmedOutput: {
       marginVertical: '10%',
       alignItems: 'center'

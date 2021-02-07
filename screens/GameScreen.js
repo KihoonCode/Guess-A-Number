@@ -91,12 +91,10 @@ const styles = StyleSheet.create({
       padding: 10,
       alignItems: 'center',
    },
-
    numberContainer: {
       alignItems: "center",
       marginBottom: '5%'
    },
-
    buttonContainer: {
       flexDirection: 'row',
       justifyContent: 'space-around',
