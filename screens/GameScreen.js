@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { StyleSheet, View, Text, Button, Alert } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
 import TitleText from '../components/TitleText';
 import MainButton from '../components/MainButton';
-
-import Colors from '../constants/colors';
 
 /**
  * Returns a random number between min(inclusive) and max(exclusive), yet
@@ -74,14 +73,12 @@ const GameScreen = props => {
             <NumberContainer>{currGuess}</NumberContainer>
          </Card>
          <Card style={styles.buttonContainer}>
-            <Button
-               color={Colors.primary}
-               title='LOWER'
-               onPress={() => generateNextGuess('lower')} />
-            <Button
-               color={Colors.primary}
-               title='GREATER'
-               onPress={() => generateNextGuess('greater')} />
+            <MainButton onPress={() => generateNextGuess('lower')}>
+               <Ionicons name="md-remove" size={26} color="white" />
+            </MainButton>
+            <MainButton onPress={() => generateNextGuess('greater')}>
+               <Ionicons name="md-add" size={26} color="white" />
+            </MainButton>
          </Card>
       </View>
    );
