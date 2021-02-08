@@ -6,6 +6,9 @@ import Card from '../components/Card';
 import NumberContainer from '../components/NumberContainer';
 import TitleText from '../components/TitleText';
 import MainButton from '../components/MainButton';
+import BodyText from '../components/BodyText';
+
+import Colors from '../constants/colors';
 
 /**
  * Returns a random number between min(inclusive) and max(exclusive), yet
@@ -21,6 +24,13 @@ const generateNumber = (min, max, exclude) => {
       return random;
    }
 };
+
+const generateItem = (guess, round) => (
+   <View key={guess} style={styles.listItem}>
+      <BodyText style={styles.historyText}>Guess for #{round}:</BodyText>
+      <BodyText style={styles.historyText}>{guess}</BodyText>
+   </View>
+);
 
 const GameScreen = props => {
    // initial guess in the game
@@ -78,12 +88,12 @@ const GameScreen = props => {
                <Ionicons name="md-add" size={26} color="white" />
             </MainButton>
          </Card>
-         <ScrollView>
-            {pastGuesses.map(guess =>
-               <View key={guess}>
-                  <Text>{guess}</Text>
-               </View>)}
-         </ScrollView>
+         <View style={styles.listContainer}>
+            <ScrollView>
+               {pastGuesses.map((guess, index) =>
+                  generateItem(guess, pastGuesses.length - index))}
+            </ScrollView>
+         </View>
       </View>
    );
 };
@@ -103,6 +113,23 @@ const styles = StyleSheet.create({
       justifyContent: 'space-around',
       width: '70%',
       paddingHorizontal: 20
+   },
+   listContainer: {
+      flex: 1,
+      width: '80%'
+   },
+   listItem: {
+      backgroundColor: Colors.primary,
+      borderTopLeftRadius: 10,
+      borderBottomRightRadius: 10,
+      padding: 15,
+      fontSize: 17,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginVertical: 5
+   },
+   historyText: {
+      color: '#FFFFFF'
    }
 });
 
