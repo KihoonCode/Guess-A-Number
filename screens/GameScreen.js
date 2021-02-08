@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert, ScrollView, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import Card from '../components/Card';
@@ -23,16 +23,14 @@ const generateNumber = (min, max, exclude) => {
 };
 
 const GameScreen = props => {
+   // initial guess in the game
+   const [initialGuess,] = useState(generateNumber(1, 100, props.userGuess));
    // current computer guess
-   const [currGuess, setCurrGuess] =
-      useState(generateNumber(1, 100, props.userGuess));
-
-   // number of guesses taken to get user's number
-   const [totalGuesses, setTotalGuesses] = useState(0);
-
+   const [currGuess, setCurrGuess] = useState(initialGuess);
+   // past guesses of computer
+   const [pastGuesses, setPastGuesses] = useState([initialGuess]);
    // current game's maximum number
    const currHigh = useRef(100);
-
    // current game's minimum number
    const currLow = useRef(1);
 
@@ -40,7 +38,7 @@ const GameScreen = props => {
 
    useEffect(() => {
       if (currGuess === userGuess) {
-         endGame(totalGuesses);
+         endGame(pastGuesses.length);
       }
    }, [currGuess, userGuess, endGame]);
 
@@ -63,7 +61,7 @@ const GameScreen = props => {
       }
       const nextGuess = generateNumber(currLow.current, currHigh.current, currGuess);
       setCurrGuess(nextGuess);
-      setTotalGuesses(current => current + 1);
+      setPastGuesses(curr => [nextGuess, ...curr]);
    };
 
    return (
@@ -80,6 +78,12 @@ const GameScreen = props => {
                <Ionicons name="md-add" size={26} color="white" />
             </MainButton>
          </Card>
+         <ScrollView>
+            {pastGuesses.map(guess =>
+               <View key={guess}>
+                  <Text>{guess}</Text>
+               </View>)}
+         </ScrollView>
       </View>
    );
 };
