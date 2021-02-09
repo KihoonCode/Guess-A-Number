@@ -89,7 +89,7 @@ const GameScreen = props => {
             </MainButton>
          </Card>
          <View style={styles.listContainer}>
-            <ScrollView>
+            <ScrollView contentContainerStyle={styles.list}>
                {pastGuesses.map((guess, index) =>
                   generateItem(guess, pastGuesses.length - index))}
             </ScrollView>
@@ -118,6 +118,11 @@ const styles = StyleSheet.create({
       flex: 1,
       width: '80%'
    },
+   list: {
+      flexGrow: 1,
+      alignItems: 'center',
+      justifyContent: 'flex-end'
+   },
    listItem: {
       backgroundColor: Colors.primary,
       borderTopLeftRadius: 10,
@@ -126,7 +131,8 @@ const styles = StyleSheet.create({
       fontSize: 17,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginVertical: 5
+      marginVertical: 5,
+      width: '60%'
    },
    historyText: {
       color: '#FFFFFF'
