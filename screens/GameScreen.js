@@ -25,6 +25,9 @@ const generateNumber = (min, max, exclude) => {
    }
 };
 
+/**
+ * Returns a text showing guessing history.
+ */
 const generateItem = (guess, round) => (
    <View key={guess} style={styles.listItem}>
       <BodyText style={styles.historyText}>Guess for #{round}:</BodyText>
